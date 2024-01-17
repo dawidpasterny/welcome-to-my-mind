@@ -3,8 +3,52 @@
     <meta charset="utf8" />
     <title>Form Demo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .centered-paragraph {
+        position: absolute;
+        text-align: center;
+        font-size: 200;
+        -webkit-text-stroke: 4px black; 
+        color: white;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <img src="./public/assets/mind.svg"></img>
+    <img src="./assets/mind.svg" alt="Background Image" class="background-image">
+    <div class="centered-paragraph">
+      <p id="hello"></p>
+    </div>
+    
+    <script>
+      let i = 0;
+      let txt = 'Welcome to my mind'; /* The text */
+      let speed = 20; /* The speed/duration of the effect in milliseconds */
+      
+      function typeWriter() {
+        if (i < txt.length) {
+          document.getElementById("hello").innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+      typeWriter()
+    </script>
   </body>
 </html>
